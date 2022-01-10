@@ -26,10 +26,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	//ord.json
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.1'
 	implementation group: 'org.json', name: 'json', version: '20180813'
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	//open-api(hava swagger ui 3.0)
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.9'
+	//open-api supper json
+	testImplementation group: 'org.springdoc', name: 'springdoc-openapi-webmvc-core', version: '1.5.9'
+
+
+
+
 
 
 

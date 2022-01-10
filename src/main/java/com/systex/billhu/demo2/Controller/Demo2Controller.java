@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
+
 @Slf4j
 @Controller
 public class Demo2Controller {
@@ -17,23 +18,37 @@ public class Demo2Controller {
     queryTradedService service;
 
     @GetMapping("/Demo2.out")
-    public String processDemo2(@RequestParam("Date") String date, Model model){
-        Map<String,Object> CropTraded=  service.queryDemo2(date,"農");
-        Map<String,Object> SeafoodTraded=  service.queryDemo2(date,"漁");
-        log.info("test");
-        if(CropTraded==null||SeafoodTraded==null){
+    public String processDemo2(@RequestParam("Date") String date, Model model) {
+        Map<String, Object> CropTraded = service.queryDemo2(date, "農");
+        Map<String, Object> SeafoodTraded = service.queryDemo2(date, "漁");
+        if (CropTraded == null || SeafoodTraded == null) {
             return "errorDemo2";
         }
         //Cropsum
-        String Cropsum1= String.valueOf(CropTraded.get("sum"));
-        String Cropsum2=Cropsum1.substring(0,Cropsum1.indexOf("."));
+        Double CropsumDouble = Double.valueOf(CropTraded.get("sum").toString());
+        Long CropLong = CropsumDouble.longValue();
         //seafoodsum
-        String Seafoodsum1= String.valueOf(SeafoodTraded.get("sum"));
-        String Seafoodsum2=Seafoodsum1.substring(0,Seafoodsum1.indexOf("."));
+        Double SeafoodDouble = Double.valueOf(SeafoodTraded.get("sum").toString());
+        Long SeafoodLong = SeafoodDouble.longValue();
 
-        model.addAttribute("date",date);
-        model.addAttribute("crop",Cropsum2);
-        model.addAttribute("seafood",Seafoodsum2);
+        if (CropLong == -1 && SeafoodLong != -1) {
+            model.addAttribute("date", date);
+            model.addAttribute("crop", "無交易");
+            model.addAttribute("seafood", SeafoodLong);
+        } else if (CropLong != -1 && SeafoodLong == -1) {
+            model.addAttribute("date", date);
+            model.addAttribute("crop", CropLong);
+            model.addAttribute("seafood", "無交易");
+        } else if (CropLong == -1 && SeafoodLong == -1) {
+            model.addAttribute("date", date);
+            model.addAttribute("crop", "無交易");
+            model.addAttribute("seafood", "無交易");
+        } else {
+            model.addAttribute("date", date);
+            model.addAttribute("crop", CropLong);
+            model.addAttribute("seafood", SeafoodLong);
+
+        }
 
         return "Demo2output";
 

@@ -1,6 +1,6 @@
 package com.systex.billhu.demo2.Service;
 
-import com.systex.billhu.demo2.Util.dataInterval;
+import com.systex.billhu.demo2.Util.dateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,7 +33,7 @@ public class insertTradedService {
     @Autowired
     queryProductService queryParoduct;
     @Autowired
-    dataInterval dataInterval;
+    dateUtil dataInterval;
 
     private static final String INTERT_Trading = "INSERT INTO Traded(TradedDate,ProductId,MarketId,Category,AvgPrice,TransQuantity) VALUES(?,?,?,?,?,?)";
 
