@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo3 out</title>
+    <style>
+ *{
+ 	padding: 0;
+	margin: 0;
+
+ }
+ body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+
+}
+#container{
+text-align: center;
+}
+
+                          .showdata{
+                            border: 2px solid blue;
+                            border-radius: 20px;
+                            width: 800px;
+                            display: inline-block;
+                        }
+                        .showdata>li{
+                            border: 1px solid black;
+                            border-radius: 20px;
+                            margin: 10px;
+                            width: 250;
+                            padding: 5px;
+                        }
+
+
+
+    </style>
+    <link href="/billhu/css/header.css" rel="stylesheet">
+</head>
+<body>
+<!-- bootstrap css-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!--datatable css-->
+<link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<header>
+    <h1>Demo3</h1>
+    <a href="/billhu/Demo1.in"><h3>Demo1</h3></a>
+    <a href="/billhu/Demo2.in"><h3>Demo2</h3></a>
+    <a href="/billhu/Demo3.in"><h3>Demo3</h3></a>
+    <a href="/billhu/Demo4.in"><h3>Demo4</h3></a>
+</header>
+
+<main style="background-color:#E8E8D0">
+
+    <div id="container">
+        <h4 th:text="'市場 : ' +${marketName} +' 產品 '+${productName} " ></h4>
+        <h4 th:text="'時間 : ' +${olddate} +' 至 '+${newdate} " ></h4>
+        <ul class="showdata">
+            <li th:text="'是否嚴格遞增 : '+ ${ifIncreasing} "></li>
+        </ul>
+
+    </div>
+
+
+</main>
+<footer class="footer bg-black small text-center text-white-50" style="height:30px">
+    <div class="container px-4 px-lg-5"> &copy; BillHU</div>
+</footer>
+
+<!--bootstrap js-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<!--jquery js-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--datatable js-->
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</body>
+</html>

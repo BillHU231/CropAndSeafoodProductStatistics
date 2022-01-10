@@ -1,0 +1,27 @@
+body{
+    font-size: 17px;
+    font-family: Arial;
+    background-color: aliceblue;
+    line-height: 1.5em;
+}
+header{
+    background: #333;
+    color: lightblue;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#container{
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+}
+a:link{
+    color: lime;
+}
+a:visited{
+    color: mediumpurple;
+}
+a>h3{
+    display: inline;
+}
