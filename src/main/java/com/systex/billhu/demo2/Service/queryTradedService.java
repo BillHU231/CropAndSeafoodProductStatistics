@@ -4,6 +4,7 @@ import com.systex.billhu.demo2.Util.dateUtil;
 import com.systex.billhu.demo2.Util.demo3Utill;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.*;
 
 @Slf4j
 @Service
-public class queryTradedService {
+public class queryTradedService  {
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Autowired
@@ -29,7 +30,7 @@ public class queryTradedService {
     private static final String query_Demo1 = "SELECT AVG(transquantity) ,MAX(transquantity),MIN(transquantity) FROM Traded WHERE TradedDate BETWEEN ? AND ? AND productid= ? AND marketid= ?";
     private static final String query_Demo2 = "SELECT SUM(AvgPrice) FROM Traded WHERE TradedDate=? AND Category=?;";
     private static final String query_Demo4 = "SELECT ProductId, SUM(TransQuantity) AS tq FROM Traded WHERE TradedDate BETWEEN ? AND ? AND category=?  GROUP BY  ProductId  ORDER BY tq DESC  LIMIT 10;";
-    private static final String query_Demo3_1 = "SELECT TradedDate,TransQuantity FROM Traded WHERE TradedDate BETWEEN ? AND ? AND ProductId = ? AND MarketId=? ;";
+    private static final String query_Demo3_1 = "SELECT TradedDate,TransQuantity FROM Traded WHERE TradedDate BETWEEN ? AND ? AND ProductId = ? AND MarketId=? ORDER BY TradedDate;";
 
 
     public Map<String, Object> queryDemo1(String actionDateString, String endDateString, String productName, String MarketName) {
@@ -101,10 +102,9 @@ public class queryTradedService {
 
     }
 
-    public Map<String,Object> queryDemo3(String dateString, String productName, String marketName) {
-
-
-        Map<String, Object> queryDateMap = new TreeMap<>();
+    public boolean queryDemo3(String dateString, String productName, String marketName) {
+        Boolean isBoolean=false;
+        List<String> queryDateList = new ArrayList<>();
 
 
         Calendar cal = Calendar.getInstance();
@@ -112,9 +112,8 @@ public class queryTradedService {
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             Date date = df.parse(dateString);
             cal.setTime(date);
-            cal.add(Calendar.DATE, +1);
             Date nowDate=cal.getTime();
-            cal.add(Calendar.DATE, -6);
+            cal.add(Calendar.DATE, -5);
             Date oldDate = cal.getTime();
 
             int productId = pService.queryProductid(productName);
@@ -122,16 +121,15 @@ public class queryTradedService {
             List<Map<String, Object>> queryDateList3_1 = jdbcTemplate.queryForList(query_Demo3_1, new Object[]{oldDate, nowDate, productId, marketid});
 
             if (queryDateList3_1.size() != 5) {
-                return null;
+                return false;
+            }
+            for(Map<String,Object> item:queryDateList3_1){
+                queryDateList.add(item.get("TransQuantity").toString());
             }
 
-            for (Map itemMap : queryDateList3_1) {
-                queryDateMap.put(String.valueOf(itemMap.get("TradedDate")), itemMap.get("TransQuantity"));
-            }
+          isBoolean=demo3utill.ifIncreasing(queryDateList);
 
-          Boolean isBoolean=demo3utill.ifIncreasing(queryDateMap);
-
-            queryDateMap.put("ifIncreasing",isBoolean);
+            queryDateList.add(String.valueOf(isBoolean));
 
 
         } catch (ParseException e) {
@@ -139,7 +137,7 @@ public class queryTradedService {
         }
 
 
-        return queryDateMap;
+        return isBoolean;
 
     }
 
@@ -170,5 +168,6 @@ public class queryTradedService {
         return queryDate.get(0);
 
     }
+
 
 }

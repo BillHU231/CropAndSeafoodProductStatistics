@@ -23,11 +23,9 @@ public class Demo3Controller {
 
     @GetMapping("/Demo3.out")
     public String processDem03(@RequestParam("date") String dateString, @RequestParam("productName") String productName, @RequestParam("marketName") String marketName, Model model){
-       Map<String,Object> queryData=  service.queryDemo3(dateString,productName,marketName);
-       if(queryData ==null){
-           return "errorDemo3";
-       }
-       model.addAttribute("ifIncreasing",queryData.get("ifIncreasing"));
+       boolean queryData=  service.queryDemo3(dateString,productName,marketName);
+
+       model.addAttribute("ifIncreasing",queryData);
        model.addAttribute("productName",productName);
        model.addAttribute("marketName",marketName);
        model.addAttribute("newdate",dateString);
