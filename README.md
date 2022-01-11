@@ -92,7 +92,7 @@ spring.datasource.password= //輸入passWord
 >> - 程式進入點 http://localhost:8080/billhu/HomePage
 
 # Restful API 文件
->> 網址 : http://localhost:8080/biilhu/swagger-ui.html 
+>> 網址 : http://localhost:8080/billhu/swagger-ui.html 
 
 
 
