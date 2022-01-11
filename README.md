@@ -34,13 +34,21 @@
 >> - **1.在Product資料庫利用ProductName取的id**
 >> - **2.在Market資料庫利用MarketName取的id**
 >> - **3.在利用SQL語法給日期區間和Productid和Marketid在Traded資料表取得平均交易量、最大交易量、最低交易量**
+>> ### 流程圖
+>>> ![Demo1image](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/Demo1.PNG) 
 > ## Demo2設計方向
 >> - **1.利用Traded資料表中Category 分別可以取得指定日期的農和漁產品的交易金額,在利用SQL中SUM()的語法算出農和漁的交易總金額**
+>> ### 流程圖
+>>> ![Demo2image](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/Demo2.PNG) 
 > ## Demo3設計方向
 >> - **1.日期處理:利用java.util.Calendar的class中的方法可以取的指定日期的前五天**
 >> -  **2.判斷是否嚴格遞增:取出的五天的交易量,分別依序(日期由過去到現在)裝進TreeSet和ArrayList,因為TreeSet會升冪排序,ArrayList會依照日期排序,在比較TreeSet和ArrayList中依序的值是否相同,就可以知道是否嚴格遞增**
+>> ### 流程圖
+>>> ![Demo3image](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/Demo3.JPG) 
 > ## Demo4設計方向
 >> - **1.指定日期區間,在利用sql語法GROUP BY 來分組產品 ,就可以算出每個產品的總交易量,在利用sql語法中ORDER BY 來降冪排序每個產品的總交易量,在取出前10筆**
+>> ### 流程圖
+>>> ![Demo4image](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/Demo4.JPG) 
 > ## Demo的sql語法
 >  - Demo1
 ```
