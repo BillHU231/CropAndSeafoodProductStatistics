@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +20,20 @@ public class queryProductService   {
 
 
     private static final String QUERY_ProductidByProductNameAndProductCode = "SELECT id FROM Product WHERE ProductName = ? AND ProductCode = ?";
-    private static final String QUERY_ProductidByProductName = "SELECT id FROM Product WHERE ProductName = ? ";
+        private static final String QUERY_ProductidByProductName = "SELECT id FROM Product WHERE ProductName = ? ";
     private static final String QUERY_ProductNameByProductid = "SELECT ProductName FROM Product WHERE id = ? ";
+    private static final String QUERY_ProductCodeAndProductNameByCategory = "SELECT ProductCode, ProductName FROM Product WHERE Category = ? ";
 
+
+
+    public  Map<String,String> queryProductCodeAndProductNameByCategory(String category){
+        List<Map<String,Object>> queryDataList=  jdbcTemplate.queryForList(QUERY_ProductCodeAndProductNameByCategory,new Object[]{category});
+        Map<String,String> productMap=new HashMap<>();
+        for(Map<String,Object> item:queryDataList){
+            productMap.put(item.get("ProductName").toString(),item.get("ProductCode").toString());
+        }
+        return productMap;
+    }
 
     public int queryProductidByproductNameAndproductCode(String productName, String productCode) {
         try {
