@@ -1,42 +1,29 @@
 package com.systex.billhu.demo2.Util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Max;
-import java.util.*;
+import java.util.List;
 
 @Component
 public class demo3Utill  {
     public boolean ifIncreasing(List queryData) {
-        Queue<Double> tqQueue = new ArrayDeque<>();
-        int i = 0;
-        for (Object item : queryData) {
-            Double tq = new Double(item.toString().trim());
+            Double tqinit = new Double(queryData.get(0).toString());
+        for (int i = 1; i < queryData.size(); i++) {
+            Double tq = new Double(queryData.get(i).toString());
 
-            if (i == 0) {
-                i++;
-                tqQueue.add(tq);
+            if (tq > tqinit) {
+                tqinit = tq;
                 continue;
-            }
-            if(tq>tqQueue.poll()){
-                i++;
-                tqQueue.add(tq);
-                continue;
-            }else{
-                break;
+            } else {
+
+                return false;
             }
 
         }
-
-        if(i==queryData.size()&&i>0){
-            return true;
-        }
-
-        return false;
-
+        return true;
 
     }
-
 
 }

@@ -141,6 +141,8 @@ public class queryTradedService  {
 
     }
 
+
+
     public List<Map<String, Object>> queryDemo4(String yearString, String monthString, String category) {
 
         List<List<Map<String, Object>>> queryDate = new ArrayList<>();
@@ -168,6 +170,8 @@ public class queryTradedService  {
         return queryDate.get(0);
 
     }
+
+
 
 
 }
