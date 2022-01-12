@@ -1,11 +1,13 @@
 package com.systex.billhu.demo2.Service;
 
 import com.systex.billhu.demo2.Util.insertProductAndMarketUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Slf4j
 @Service
 public class insertMarketService {
     @Autowired
@@ -22,6 +24,7 @@ public class insertMarketService {
         if(num.length<=0){
             return -1;
         }
+
 
 
         return num.length;
