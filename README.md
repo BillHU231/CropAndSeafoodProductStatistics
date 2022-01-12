@@ -11,9 +11,9 @@
 # 設計方向
 > ## 爬取資料
 >> - ### 1.爬取產品資料-分別爬取農糧署的API農產品資料型別和漁產品交易資料型別進入Product資料表中,並有個欄位來分辨是農產品還是漁產品
->>> ![productimage](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/product.PNG)
+>>> ![productimage](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/product.jpg)
 >> - ### 2.爬取市場資料-分別爬取農糧署的API農產市場資料型別資料型別和漁市場資料型別進入Market資料表中,並有個欄位來分辨是農市場還是漁市場
->>> ![marketimage](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/market.PNG)
+>>> ![marketimage](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/market.jpg)
 >> - ### 3.爬取交易行情資料-爬取農糧署的API中農產品和漁產品交易行情,分別給交易日期和市場代號參數,日期利用部分java.time.LocalDate.now()取的現在時間的年、月、日,在利用三層迴圈製作2020-01-01至當天時間的日期的參數,市場代號參數是直接抓取Market資料表中的市場代號,並利用兩個參數依序爬取交易行情進Traded資料表
 >>> ![tradedimage](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/traded.jpg) 
 > ## 資料表設計
