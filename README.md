@@ -97,7 +97,10 @@ spring.datasource.password= //輸入passWord
 >> - 程式進入點 http://localhost:8080/billhu/HomePage
 
 # Restful API 文件
->> 網址 : http://localhost:8080/billhu/swagger-ui.html 
+> ##進入文件url
+>> 網址 : http://localhost:8080/billhu/swagger-ui.html
+> ##圖示
+>> ![swagger_image](https://github.com/BillHU231/CropAndSeafoodProductStatistics/blob/master/images/swagger.JPG)  
 
 
 
