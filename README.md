@@ -1,7 +1,7 @@
 
 # 載入農委會openData API project
 > # 簡介
->> 爬取農委會提供的OpenData來進行農產品和漁產品的分析與統計。
+>> 爬取農委會提供的OpenData(https://data.coa.gov.tw/api.aspx )來進行農產品和漁產品的分析與統計。
 > ## 分析項目
 >> ### Demo1
 >>> **統計指定時間區間,農產品在指定市場的的平均交易量、最大交易量、最低交易量**
@@ -22,9 +22,9 @@
 >> - ### 3.爬取交易行情資料-爬取農糧署的API中農產品和漁產品交易行情,分別給交易日期和市場代號參數,日期利用部分java.time.LocalDate.now()取的現在時間的年、月、日,在利用三層迴圈製作2020-01-01至當天時間的日期的參數,市場代號參數是直接抓取Market資料表中的市場代號,並利用兩個參數依序爬取交易行情進Traded資料表
 >>> ![tradedimage](https://github.com/BillHU231/systex_lab2_billhu_v3/blob/master/images/traded.jpg) 
 > ## 資料表設計
->> - **1.Product資料表:分別有id位欄位為primarykey,並自動產生,和ProductCode和ProductName和Category**
->> - **2.Market資料表:分別有id位欄位為primarykey,並自動產生,和MarketCode和MarkettName和Category**
->> - **3.Traded資料表:分別有id位欄位為primarykey,並自動產生,和TradedDate和ProductId和MarketId和Category和AvgPrice和TransQuantity,其中ProductId為FOREIGN KEY和Product資料表中的id為多對一的關係MarketId為FOREIGN KEY和Market資料表中的id為多對一的關係**
+>> - **1.Product資料表:分別有Productid位欄位為primarykey,並自動產生,和ProductCode和ProductName和Category**
+>> - **2.Market資料表:分別有Marketid位欄位為primarykey,並自動產生,和MarketCode和MarkettName和Category**
+>> - **3.Traded資料表:分別有Tradedid位欄位為primarykey,並自動產生,和TradedDate和ProductId和MarketId和Category和AvgPrice和TransQuantity,其中ProductId為FOREIGN KEY和Product資料表中的id為多對一的關係MarketId為FOREIGN KEY和Market資料表中的id為多對一的關係**
 >> - **這樣設計資料表有利於交易行情資料表的查詢效率**
 > ## 取得建立資料表SQL語法
 >> - 路徑:src\main\resources\schema.sql
