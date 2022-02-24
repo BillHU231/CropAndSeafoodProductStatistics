@@ -34,7 +34,7 @@
 > ## 資料表ED圖
 >> ![sqlEDwj6](https://github.com/BillHU231/systex_lab2_billhu_v2/blob/master/images/SQL_ER.PNG)
 > ##  sampleData
->> - 因檔案過大,另附雲端:https://drive.google.com/drive/folders/1-va-ds8ODXYL1OEyQYZ6KFum2brvFKqP?usp=sharing
+>> - 因檔案過大,另附雲端:https://u.pcloud.link/publink/show?code=kZTGGkVZ9LWcUFQFw8QSKlQFDUuJUkeuiw7X
 > ## Demo1設計方向
 >> - **1.在Product資料庫利用ProductName取的id**
 >> - **2.在Market資料庫利用MarketName取的id**
